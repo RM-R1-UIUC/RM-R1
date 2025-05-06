@@ -9,6 +9,16 @@
 
 **RM‑R1** reframes reward modeling as a *reasoning* problem. Instead of emitting an opaque scalar, a Reasoning Reward Model (ReasRM) first *thinks out loud*—generating a structured rubric or solution—and then predicts the preference between two responses. This simple shift boosts both *interpretability* **and** *performance*: RM‑R1 beats prior open‑source reward models (e.g. GPT-4o, Llama3.1-405B) on multiple public benchmarks, while letting you read *why* the model prefers one answer over the other.  
 
+This repository provides all materials necessary to reproduce and extend RM-R1:
+
+- End-to-end scripts and configs for training (Distillation + RL),
+- a unified evaluation harness for public benchmarks, and 
+- ready-to-run examples for deployment and inference.
+
+All experiments are fully documented so that results can be audited or adapted to new domains with minimal changes. 
+
+**<span style="color:#d45500;">⚡ This repository is continuously updated—star it to follow new releases!</span>**
+
 ---
 
 ## 📑 Table of Contents
@@ -113,12 +123,13 @@ bash ./rm_r1/verl/scripts/local/train_rm_rlvr_dpsk_distilled_7b.sh
 
 ## Features 
 
-- Support both SFT and RL training. 
+- Open release of trained model and the full accompanying datasets. ✔️ 
+- End-to-end pipelines for both supervised fine-tuning (SFT) and reinforcement learning (RL). 
 - Support different RL frameworks.  
-- Support Slurm v.s. Non-Slurm Training. 
+- Support Slurm v.s. Interactive Training. 
 - Support multi-node, multi-gpu training.  
 - Support different LLMs. ✔️ 
-- Support evaluation of public benchmark. 
+- One-command evaluation on public RM benchmarks for quick, reproducible reporting.
 
 ---
 
