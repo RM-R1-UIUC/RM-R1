@@ -4,7 +4,7 @@
 
 ![TrainPipeline](figures/rm-r1-1.png)
 
-**RM‑R1** reframes reward modeling as a *reasoning* problem. Instead of emitting an opaque scalar, a ReasRM first *thinks out loud*—generating a structured rubric or solution—and then predicts the preference between two responses. This simple shift boosts both *interpretability* **and** *performance*: RM‑R1 beats prior open‑source reward models (e.g. GPT-4o, Llama3.1-405B) on multiple public benchmarks, while letting you read *why* the model prefers one answer over the other.  
+**RM‑R1** reframes reward modeling as a *reasoning* problem. Instead of emitting an opaque scalar, a Reasoning Reward Model (ReasRM) first *thinks out loud*—generating a structured rubric or solution—and then predicts the preference between two responses. This simple shift boosts both *interpretability* **and** *performance*: RM‑R1 beats prior open‑source reward models (e.g. GPT-4o, Llama3.1-405B) on multiple public benchmarks, while letting you read *why* the model prefers one answer over the other.  
 
 ## 🔍 Installation
 
@@ -63,9 +63,19 @@ Training
 - coming soon 
 
 
+## Features 
+
+- Support both SFT and RL training. 
+- Support different RL frameworks. ✔️ 
+- Support Slurm v.s. Non-Slurm Training. ✔️
+- Support multi-node, multi-gpu training. ✔️ 
+- Support different LLMs. ✔️ 
+- Support evaluation of public benchmark. 
+
+
 ## Acknowledgement 
 
-The concept of Search-R1 is inspired by [Deepseek-R1](https://github.com/deepseek-ai/DeepSeek-R1). Its implementation is built upon [veRL](https://github.com/volcengine/verl) and [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF). We sincerely appreciate the efforts of these teams for their contributions to open-source research and development.
+The concept of RM-R1 is inspired by [Deepseek-R1](https://github.com/deepseek-ai/DeepSeek-R1). Its implementation is built upon [veRL](https://github.com/volcengine/verl) and [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF). We sincerely appreciate the efforts of these teams for their contributions to open-source research and development.
 
 ## Citations
 
