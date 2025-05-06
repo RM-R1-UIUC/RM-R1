@@ -86,7 +86,7 @@ The full training scripts live under [`rm_r1/verl/scripts/`](rm_r1/verl/scripts/
 
 ```bash
 conda activate RM-R1 
-bash 
+bash ./rm_r1/verl/scripts/local/train_rm_rlvr_dpsk_distilled_7b.sh 
 ```
 
 ---
@@ -114,9 +114,9 @@ bash
 ## Features 
 
 - Support both SFT and RL training. 
-- Support different RL frameworks. ✔️ 
-- Support Slurm v.s. Non-Slurm Training. ✔️
-- Support multi-node, multi-gpu training. ✔️ 
+- Support different RL frameworks.  
+- Support Slurm v.s. Non-Slurm Training. 
+- Support multi-node, multi-gpu training.  
 - Support different LLMs. ✔️ 
 - Support evaluation of public benchmark. 
 
