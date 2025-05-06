@@ -82,21 +82,54 @@ pip install uv && uv pip install --upgrade pip
 uv pip install vllm==0.7.2
 
 # OpenRLHF
-git clone https://github.com/OpenRLHF/OpenRLHF.git
 cd OpenRLHF
 uv pip install -e .
 ```
 
 ---
 
-## Training
+## 🚀 Training Workflow
 
-The full training scripts live under [`rm_r1/verl/scripts/`](rm_r1/verl/scripts/). A minimal single‑node launch looks like:
+All training recipes live in [`rm_r1/scripts/`](rm_r1/scripts/). The pipeline has **two stages** (for instruct models):
 
+| Stage | Script Directory | 
+|-------|----------------|
+| **Distillation** | `scripts/Distill/distill_qwen2.5-*.sh` |
+| **RL with Verifiable Rewards (RLVR)** | `scripts/RLVR/*train_rm_r1_rlvr_*.sh` | 
+
+Specify `SAVE_MODEL_PATH` in every distillation script and `SAVE_META_DIR` in every RLVR script to choose where checkpoints are stored. Other arguments such as batch size, learning rate, Slurm partition, etc., can be edited directly in each shell script. Detailed flag descriptions are available in the [veRL documentation](https://verl.readthedocs.io/en/latest/index.html).
+
+### 🔧 Example  Training a 14 B *Instruct* model from scratch
 
 ```bash
-conda activate RM-R1 
-bash ./rm_r1/verl/scripts/local/train_rm_rlvr_dpsk_distilled_7b.sh 
+# 1️⃣ Distillation (SFT)
+conda activate rm-r1-sft
+cd rm_r1/OpenRLHF
+bash ../scripts/Distill/local/distill_qwen2.5-14b-instruct.sh
+
+# 2️⃣ RLVR fine‑tuning
+conda deactivate
+conda activate rm-r1
+cd ../..
+
+# – local single‑node
+bash rm_r1/scripts/RLVR/local/train_rm_r1_rlvr_qwen2.5_instruct_14b.sh
+
+# – Slurm cluster
+sbatch rm_r1/scripts/RLVR/slurm/train_rm_r1_rlvr_qwen2.5_instruct_14b.sh \
+      SAVE_META_DIR=/path/to/experiments/qwen14b_rlvr
+```
+
+### 🔧 Example  Fine‑tuning a **DeepSeek‑distilled** checkpoint
+
+```bash
+conda activate rm-r1
+
+# – local
+bash rm_r1/scripts/RLVR/local/train_rm_r1_rlvr_dpsk_distilled_14b.sh
+
+# – Slurm
+sbatch rm_r1/scripts/RLVR/slurm/train_rm_r1_rlvr_dpsk_distilled_14b.sh
 ```
 
 ---
@@ -124,11 +157,12 @@ bash ./rm_r1/verl/scripts/local/train_rm_rlvr_dpsk_distilled_7b.sh
 ## Features 
 
 - Open release of trained model and the full accompanying datasets. ✔️ 
-- End-to-end pipelines for both supervised fine-tuning (SFT) and reinforcement learning (RL). 
-- Support different RL frameworks.  
-- Support Slurm v.s. Interactive Training. 
-- Support multi-node, multi-gpu training.  
+- End-to-end pipelines for both supervised fine-tuning (SFT) and reinforcement learning (RL). ✔️ 
+- Support different RL frameworks. ✔️   
+- Support Slurm v.s. Interactive Training. ✔️ 
+- Support multi-node, multi-gpu training. ✔️ 
 - Support different LLMs. ✔️ 
+- Support building your own custom dataset. 
 - One-command evaluation on public RM benchmarks for quick, reproducible reporting.
 
 ---

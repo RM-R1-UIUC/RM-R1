@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=rl                                # Job name
+#SBATCH --job-name=rmr1                              # Job name
 #SBATCH --nodes=4                                    # Number of nodes
 #SBATCH --ntasks-per-node=1                          # Number of tasks per node
 #SBATCH --cpus-per-task=128                          # Number of CPUs per task
 #SBATCH --gres=gpu:8                                 # Number of GPUs per node
 #SBATCH --gpus-per-task=8                            # Number of GPUs per task
 #SBATCH --exclusive                                  # Use the entire node, all CPUs and memory
-#SBATCH --time=240:00:00                              # Maximum runtime
+#SBATCH --time=72:00:00                              # Maximum runtime
 #SBATCH --output=./logs/output_%j.log                # Standard output and error log
 
 set -x
@@ -75,42 +75,43 @@ for ((i = 1; i <= worker_num; i++)); do
 done
 
 
-
 # ============SETTING PARAMETER===============
 # Model Setting
-MODEL_PATH=your_distilled_model_path # Distilled Model Path 
+MODEL_PATH=deepseek-ai/DeepSeek-R1-Distill-Qwen-32B # You may specify local directory
 
 # Training Setting
-LR=5.0e-7
+LR=8.0e-7
 GPU_MEM_UTILIZATION=0.4 # Lower this if you met OOM problem
 TOTAL_EPISODES=1
 SAVE_EVERY_STEP=45
 TEST_EVERY_STEP=100000
 TRAIN_BS=1024           # Rollout batchsize. Could be arbitrary large, but must be divided by N_GPU.
 PPO_MINI_BS=128         # Train batch size. Could be arbitrary large, must be the divisor of TRAIN_BS and be divided by N_GPU. Setting this equal to TRAIN_BS means strictly on-policy.
+WARMUP_STYLE=constant
 
-MAX_PROMPT_LENGTH=4096  # Lower this if you met OOM problem.
+MAX_PROMPT_LENGTH=4096   # Lower this if you met OOM problem.
 MAX_RESPONSE_LENGTH=8192 # Lower this if you met OOM problem
-TRAIN_PER_GPU=1         # REAL train batch size per gpu. Lower this if you met OOM problem. Must be a divisor of PPO_MINI_BS.
-FORWARD_PER_GPU=1       # Batch size to get logprob. Lower this if you met OOM problem. Must be a divisor of TRAIN_BS.
+TRAIN_PER_GPU=1          # REAL train batch size per gpu. Lower this if you met OOM problem. Must be a divisor of PPO_MINI_BS.
+FORWARD_PER_GPU=1        # Batch size to get logprob. Lower this if you met OOM problem. Must be a divisor of TRAIN_BS.
 
 # Logging Setting
 PROJECT_NAME=RM-R1
-EXPERIMENT_NAME=qwen2.5_32B_LR${LR}_32B_RLVR
+EXPERIMENT_NAME=RM-R1-Dpsk-Distilled-32B-LR${LR}
+SAVE_NAME=RM-R1-Dpsk-Distilled-32B-LR${LR}
+SAVE_META_DIR="Your_Desired_Meta_Save_Dir"
 
 # Reward Setting
 REWARD_PATH=./rm_r1/verl/utils/reward_score/lm_as_judge.py
 REWARD_FUNC_NAME=lm_as_judge_match
 
 # Task
-TRAIN_TASK="#Your Data"
-EVAL_TASK="#Your Data"
+TRAIN_TASK="gaotang/RM-R1-Reasoning-RLVR"
+EVAL_TASK="gaotang/RM-R1-Reasoning-RLVR"
 
 # FIXED SETTING (DO NOT MODIFY IF YOU DO NOT KNOW WHAT IT MEANS)
 MAX_NUM_BATCHED_TOKENS=$(($MAX_PROMPT_LENGTH + $MAX_RESPONSE_LENGTH))
 
-
-python3 -m rm_r1.verl.trainer.main_ppo \
+python3 -m rubric_rm.verl.trainer.main_ppo \
     data.train_files=${TRAIN_TASK} \
     data.val_files=${EVAL_TASK} \
     data.max_prompt_length=${MAX_PROMPT_LENGTH} \
@@ -133,4 +134,5 @@ python3 -m rm_r1.verl.trainer.main_ppo \
     trainer.experiment_name=${EXPERIMENT_NAME} \
     trainer.n_gpus_per_node=${N_GPU} \
     trainer.nnodes=${N_NODES} \
-    actor_rollout_ref.actor.entropy_coeff=0
+    actor_rollout_ref.actor.entropy_coeff=0 \
+    actor_rollout_ref.actor.optim.warmup_style=${WARMUP_STYLE}
