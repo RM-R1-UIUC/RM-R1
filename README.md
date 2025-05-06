@@ -1,6 +1,6 @@
 # RM-R1: **Reward Modeling as Reasoning**
 
-[**🤗 Model**](https://huggingface.co/collections/gaotang/rm-r1-681128cdab932701cad844c8) | [**📊 Dataset**](https://huggingface.co/collections/gaotang/rm-r1-681128cdab932701cad844c8) | [**📖 Paper**](https://arxiv.org/pdf/2504.13958)
+[**🤗 Model**](https://huggingface.co/collections/gaotang/rm-r1-681128cdab932701cad844c8) | [**📊 Dataset**](https://huggingface.co/collections/gaotang/rm-r1-681128cdab932701cad844c8) | [**📖 Paper**](https://arxiv.org/abs/2505.02387)
 
 <p align="center">
   <img src="figures/rm-r1-1.png" alt="RM‑R1 pipeline" width="80%"/>
@@ -58,7 +58,7 @@ VLLM_USE_PRECOMPILED=1 pip install --editable .
 pip install flash-attn==2.7.2.post1 --no-build-isolation
 ```
 
-**Done!** You can now run RM‑R1 for inference or RL training.
+**Done!** You can now run RM‑R1 for RL training.
 
 ### (Optional) Distillation / SFT environment
 
