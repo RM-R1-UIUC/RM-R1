@@ -23,7 +23,7 @@ All experiments are fully documented so that results can be audited or adapted t
 
 ## 📑 Table of Contents
 1. [Installation](#installation)
-2. [Training](#training)
+2. [Training](#-training-workflow)
 3. [Evaluation](#evaluation)
 4. [User Our Model](#use-our-model)
 5. [Build Your Own Dataset](#build-your-own-dataset)
