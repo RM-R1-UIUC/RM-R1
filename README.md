@@ -112,12 +112,11 @@ conda deactivate
 conda activate rm-r1
 cd ../..
 
-# – local single‑node
+# – local
 bash rm_r1/scripts/RLVR/local/train_rm_r1_rlvr_qwen2.5_instruct_14b.sh
 
 # – Slurm cluster
-sbatch rm_r1/scripts/RLVR/slurm/train_rm_r1_rlvr_qwen2.5_instruct_14b.sh \
-      SAVE_META_DIR=/path/to/experiments/qwen14b_rlvr
+sbatch rm_r1/scripts/RLVR/slurm/train_rm_r1_rlvr_qwen2.5_instruct_14b.sh
 ```
 
 ### 🔧 Example  Fine‑tuning a **DeepSeek‑distilled** checkpoint
