@@ -146,9 +146,33 @@ sbatch rm_r1/scripts/RLVR/slurm/train_rm_r1_rlvr_dpsk_distilled_14b.sh
 
 ---
 
-## Build Your Own Dataset 
+## 🧩 Build Your Own Dataset
 
-- coming soon 
+This section outlines how we curated and blended data for training **RM‑R1**, and how you can adapt the process for your own use case.
+
+
+### 🔗 Source Pools
+
+We mix examples from the following datasets:
+
+| Dataset | Size | Domain |
+|--------|------|--------|
+| **[Skywork‑Reward‑Preference‑80K‑v0.2](https://huggingface.co/datasets/Skywork/Skywork-Reward-Preference-80K-v0.2)** | ~54k pairs | General |
+| **[Code‑Preference‑Pairs](https://huggingface.co/datasets/Vezora/Code-Preference-Pairs)** | 8k pairs | Code |
+| **[Math‑Step‑DPO‑10K](https://huggingface.co/datasets/xinlai/Math-Step-DPO-10K)** | 10k pairs | Math |
+
+We thank the authors of these datasets for their contributions. If you'd like to construct your own dataset, feel free to refer to our mixing script at [`rm_r1/dataset/mix_data/mix_data.py`](rm_r1/dataset/mix_data/mix_data.py).
+
+### 🛠️ Generating High‑Quality Reasoning Chains
+
+A key component of RM‑R1 training is the use of **correct and coherent** distilled reasoning chains. Naively prompting strong models (e.g., O3, Claude) in a zero-shot setting yields only ~75% chain accuracy—insufficient for stable RL training. To address this, we use a **two-pass bootstrapping strategy**:
+
+1. **Pass 1 (Claude-3.7-Sonnet):** Generate chains via zero-shot prompting.
+2. **Keep:** Retain samples with incorrect answers and their corresponding chains.
+3. **Pass 2 (O3):** Provide the *correct* answer, the prompt, and the flawed chain from Pass 1. Ask the model to regenerate a corrected reasoning chain.
+
+This approach reliably produces chains that are both accurate and logically sound. Our implementations are provided at [`rm_r1/dataset/reasoning_chain_generation/`](rm_r1/dataset/reasoning_chain_generation/).
+
 
 ---
 

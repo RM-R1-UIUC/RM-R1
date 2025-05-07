@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=rl                                # Job name
+#SBATCH --job-name=rmr1                              # Job name
 #SBATCH --nodes=1                                    # Number of nodes
 #SBATCH --ntasks-per-node=1                          # Number of tasks per node
 #SBATCH --cpus-per-task=128                          # Number of CPUs per task
