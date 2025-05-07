@@ -99,6 +99,8 @@ All training recipes live in [`rm_r1/scripts/`](rm_r1/scripts/). The pipeline ha
 
 Specify `SAVE_MODEL_PATH` in every distillation script and `SAVE_META_DIR` in every RLVR script to choose where checkpoints are stored. Other arguments such as batch size, learning rate, Slurm partition, etc., can be edited directly in each shell script. Detailed flag descriptions are available in the [veRL documentation](https://verl.readthedocs.io/en/latest/index.html).
 
+**We support large-scale, multi-node, and multi-GPU training.**
+
 ### 🔧 Example  Training a 14 B *Instruct* model from scratch
 
 ```bash
