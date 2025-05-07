@@ -165,7 +165,7 @@ We thank the authors of these datasets for their contributions. If you'd like to
 
 ### 🛠️ Generating High‑Quality Reasoning Chains
 
-A key component of RM‑R1 training is the use of **correct and coherent** distilled reasoning chains. Naively prompting strong models (e.g., O3, Claude) in a zero-shot setting yields only ~75% chain accuracy—insufficient for stable RL training. To address this, we use a **two-pass bootstrapping strategy**:
+A key component of RM‑R1 training is the use of **correct and coherent** distilled reasoning chains. Naively prompting strong thinking models (e.g., O3, Claude) in a zero-shot setting yields only ~75% chain accuracy. To address this, we use a **two-pass bootstrapping strategy**:
 
 1. **Pass 1 (Claude-3.7-Sonnet):** Generate chains via zero-shot prompting.
 2. **Keep:** Retain samples with incorrect answers and their corresponding chains.
