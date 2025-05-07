@@ -199,10 +199,10 @@ The concept of RM-R1 is inspired by [Deepseek-R1](https://github.com/deepseek-ai
 ## Citations
 
 ```bibtex
-@misc{2505.02387,
-Author = {Xiusi Chen and Gaotang Li and Ziqi Wang and Bowen Jin and Cheng Qian and Yu Wang and Hongru Wang and Yu Zhang and Denghui Zhang and Tong Zhang and Hanghang Tong and Heng Ji},
-Title = {RM-R1: Reward Modeling as Reasoning},
-Year = {2025},
-Eprint = {arXiv:2505.02387},
+@article{chen2025rm,
+  title={RM-R1: Reward Modeling as Reasoning},
+  author={Chen, Xiusi and Li, Gaotang and Wang, Ziqi and Jin, Bowen and Qian, Cheng and Wang, Yu and Wang, Hongru and Zhang, Yu and Zhang, Denghui and Zhang, Tong and others},
+  journal={arXiv preprint arXiv:2505.02387},
+  year={2025}
 }
 ```
