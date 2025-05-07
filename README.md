@@ -185,7 +185,7 @@ This approach reliably produces chains that are both accurate and logically soun
 - Support Slurm v.s. Interactive Training. ✔️ 
 - Support multi-node, multi-gpu training. ✔️ 
 - Support different LLMs. ✔️ 
-- Support building your own custom dataset. 
+- Support building your own custom dataset. ✔️ 
 - One-command evaluation on public RM benchmarks for quick, reproducible reporting.
 
 ---
