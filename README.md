@@ -138,9 +138,7 @@ sbatch rm_r1/scripts/RLVR/slurm/train_rm_r1_rlvr_dpsk_distilled_14b.sh
 
 ## Use Our Model 
 
-- coming soon
-
----
+You can find a demo of how to use our model in the Jupyter notebook located at [`demo/demo.ipynb`](demo/demo.ipynb). 
 
 ## Evaluation 
 
@@ -188,6 +186,7 @@ This approach reliably produces chains that are both accurate and logically soun
 - Support multi-node, multi-gpu training. ✔️ 
 - Support different LLMs. ✔️ 
 - Support building your own custom dataset. ✔️ 
+- Demo Code for using RM-R1. ✔️
 - One-command evaluation on public RM benchmarks for quick, reproducible reporting.
 
 ---
