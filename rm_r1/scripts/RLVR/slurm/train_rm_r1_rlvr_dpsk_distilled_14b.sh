@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=rmr1                              # Job name
-#SBATCH --nodes=4                                    # Number of nodes
+#SBATCH --nodes=2                                    # Number of nodes
 #SBATCH --ntasks-per-node=1                          # Number of tasks per node
 #SBATCH --cpus-per-task=128                          # Number of CPUs per task
 #SBATCH --gres=gpu:8                                 # Number of GPUs per node
@@ -16,7 +16,7 @@ export VLLM_USE_V1=0
 export VERL_PPO_LOGGING_LEVEL="INFO"
 export PYTHONUNBUFFERED=1
 N_GPU=8
-N_NODES=4
+N_NODES=2
 
 
 # ========SETTING RAY CLUSTER============
