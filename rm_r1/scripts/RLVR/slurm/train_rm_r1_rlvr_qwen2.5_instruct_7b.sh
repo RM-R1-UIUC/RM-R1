@@ -56,7 +56,7 @@ ray stop
 
 ray start --head --node-ip-address 0.0.0.0 --num-gpus ${N_GPU}
 
-python3 -m rubric_rm.verl.trainer.main_ppo \
+python3 -m rm_r1.verl.trainer.main_ppo \
     data.train_files=${TRAIN_TASK} \
     data.val_files=${EVAL_TASK} \
     data.max_prompt_length=${MAX_PROMPT_LENGTH} \
@@ -79,6 +79,7 @@ python3 -m rubric_rm.verl.trainer.main_ppo \
     trainer.experiment_name=${EXPERIMENT_NAME} \
     trainer.n_gpus_per_node=${N_GPU} \
     actor_rollout_ref.actor.entropy_coeff=0 \
-    actor_rollout_ref.actor.optim.warmup_style=${WARMUP_STYLE}
+    actor_rollout_ref.actor.optim.warmup_style=${WARMUP_STYLE} \
+    trainer.default_local_dir=${SAVE_META_DIR}/${SAVE_NAME}
 
 ray stop

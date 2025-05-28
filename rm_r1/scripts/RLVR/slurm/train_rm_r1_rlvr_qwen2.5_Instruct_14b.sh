@@ -111,7 +111,7 @@ EVAL_TASK="gaotang/RM-R1-Reasoning-RLVR"
 # FIXED SETTING (DO NOT MODIFY IF YOU DO NOT KNOW WHAT IT MEANS)
 MAX_NUM_BATCHED_TOKENS=$(($MAX_PROMPT_LENGTH + $MAX_RESPONSE_LENGTH))
 
-python3 -m rubric_rm.verl.trainer.main_ppo \
+python3 -m rm_r1.verl.trainer.main_ppo \
     data.train_files=${TRAIN_TASK} \
     data.val_files=${EVAL_TASK} \
     data.max_prompt_length=${MAX_PROMPT_LENGTH} \
@@ -135,4 +135,5 @@ python3 -m rubric_rm.verl.trainer.main_ppo \
     trainer.n_gpus_per_node=${N_GPU} \
     trainer.nnodes=${N_NODES} \
     actor_rollout_ref.actor.entropy_coeff=0 \
-    actor_rollout_ref.actor.optim.warmup_style=${WARMUP_STYLE}
+    actor_rollout_ref.actor.optim.warmup_style=${WARMUP_STYLE} \
+    trainer.default_local_dir=${SAVE_META_DIR}/${SAVE_NAME}
