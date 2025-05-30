@@ -1,6 +1,6 @@
 # RM-R1: **Reward Modeling as Reasoning**
 
-[**🤗 Model**](https://huggingface.co/collections/gaotang/rm-r1-681128cdab932701cad844c8) | [**📊 Dataset**](https://huggingface.co/collections/gaotang/rm-r1-681128cdab932701cad844c8) | [**📖 Paper**](https://arxiv.org/abs/2505.02387)
+[**🤗 Model**](https://huggingface.co/collections/gaotang/rm-r1-681128cdab932701cad844c8) | [**📊 Dataset**](https://huggingface.co/collections/gaotang/rm-r1-681128cdab932701cad844c8) | [**📖 Paper**](https://arxiv.org/abs/2505.02387) | [**📖 Website**](https://rm-r1-uiuc.github.io/rmr1-site/)
 
 <p align="center">
   <img src="figures/rm-r1-1.png" alt="RM‑R1 pipeline" width="80%"/>
