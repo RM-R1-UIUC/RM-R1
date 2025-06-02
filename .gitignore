@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Ray and Wandb Outputs
+outputs/
+wandb/
+
 # C extensions
 *.so
 
