@@ -47,6 +47,7 @@ conda activate rm-r1
 
 ### 2. veRL – pinned commit
 ```bash
+# We recommend install verl in a directory seperate from RM-R1
 git clone https://github.com/volcengine/verl
 cd verl
 git checkout e49fb572bf85a8f0ef7124c898f509bd6d9832a1
@@ -56,6 +57,7 @@ cd ..
 
 ### 3. vLLM – pinned commit + flash‑attention
 ```bash
+# We recommend install vllm in a directory seperate from RM-R1
 git clone https://github.com/vllm-project/vllm.git
 cd vllm
 git checkout ed6e9075d31e32c8548b480a47d1ffb77da1f54c
