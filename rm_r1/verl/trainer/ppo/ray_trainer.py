@@ -9,7 +9,7 @@ from torchdata.stateful_dataloader import StatefulDataLoader
 from verl.trainer.ppo.ray_trainer import RayPPOTrainer as _RayPPOTrainer
 from verl.utils.dataset.rl_dataset import collate_fn
 
-from rubric_rm.verl.utils.dataset.rl_dataset import RubricRMDataset
+from rm_r1.verl.utils.dataset.rl_dataset import RubricRMDataset
 
 
 class RubricRMRayPPOTrainer(_RayPPOTrainer):
