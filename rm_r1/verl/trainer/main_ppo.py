@@ -21,7 +21,7 @@ import os
 import hydra
 import ray
 
-from verl.trainer.ppo.ray_trainer import RubricRMRayPPOTrainer
+from rm_r1.verl.trainer.ppo.ray_trainer import RubricRMRayPPOTrainer
 
 
 def get_custom_reward_fn(config):
