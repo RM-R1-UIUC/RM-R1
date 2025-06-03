@@ -144,7 +144,16 @@ You can find a demo of how to use our model in the Jupyter notebook located at [
 
 ## Evaluation 
 
-- coming soon
+Our evaluation leverages three publicly available datasets: [RewardBench](https://github.com/allenai/reward-bench), [RM-Bench](https://github.com/THU-KEG/RM-Bench), and [RMB](https://github.com/Zhou-Zoey/RMB-Reward-Model-Benchmark). The evaluation code is provided in the [`eval/`](eval/) directory.
+
+To run the evaluation, simply execute the following script:
+
+```bash
+bash eval/eval_one_command.sh
+```
+
+The main arguments to modify are ``model'' and ``model_save_name''. To facilitate better interpretation, our evaluation pipeline logs per-sample outputs of the model. We include the per-sample-output at [`eval/result/`](eval/result/).
+
 
 ---
 

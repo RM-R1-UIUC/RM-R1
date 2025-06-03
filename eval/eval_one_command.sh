@@ -1,7 +1,8 @@
-device="0,1,2,3,4,5,6,7"
 model="gaotang/RM-R1-Qwen2.5-Instruct-32B"
-vllm_gpu_util=0.85
 model_save_name="RM-R1-Qwen2.5-Instruct-32B"
+
+device="0,1,2,3,4,5,6,7"
+vllm_gpu_util=0.90
 num_gpus=8
 max_tokens=50000
 
