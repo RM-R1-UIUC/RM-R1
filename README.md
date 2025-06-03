@@ -152,7 +152,7 @@ To run the evaluation, simply execute the following script:
 bash eval/eval_one_command.sh
 ```
 
-The main arguments to modify are `model` and `model_save_name`. To facilitate better interpretation, our evaluation pipeline logs per-sample outputs of the model. We include the per-sample-output at [`eval/result/`](eval/result/).
+The main arguments to modify are `model` and `model_save_name`. To facilitate better interpretation, our evaluation pipeline logs per-sample outputs of the model. We provide the examplar per-sample-output at [`eval/result/`](eval/result/).
 
 
 ---
