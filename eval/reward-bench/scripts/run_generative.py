@@ -196,7 +196,7 @@ def main():
         model_modifier = "gemini"
     elif "RM-R1" in args.model and "Instruct" in args.model:
         model_modifier = "RM-R1-Instruct"
-    elif "RM-R1" in args.model and "Deepseek-Distilled" in args.model:
+    elif "RM-R1" in args.model and "DeepSeek-Distilled" in args.model:
         model_modifier = "RM-R1-Reasoning"
     else:
         model_modifier = None
