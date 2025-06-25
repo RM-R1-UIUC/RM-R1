@@ -30,7 +30,10 @@ from fastchat.conversation import get_conv_template
 from google.generativeai.types import HarmBlockThreshold, HarmCategory
 from openai import OpenAI
 from together import Together
+from pathlib import Path
 
+
+import numpy as np 
 ANTHROPIC_MODEL_LIST = (
     "claude-1",
     "claude-2",
@@ -78,6 +81,7 @@ TOGETHER_MODEL_LIST = (
 GEMINI_MODEL_LIST = (
     "gemini-1.5-flash-001",
     "gemini-1.5-pro-001",
+    "gemini-1.5-pro",
     "gemini-1.5-pro-exp-0801",
     "gemini-1.5-pro-exp-0827",
     "gemini-1.5-flash-exp-0827",
@@ -129,6 +133,23 @@ prompt_multi_v2 = (
     "presented does not influence your decision. Do not allow the length of the responses to influence your evaluation. Do not favor certain names "
     "of the assistants. Be as objective as possible. After providing your explanation, output your final verdict by strictly following this format: "
     '"[[A]]" if assistant A is better, "[[B]]" if assistant B is better.'  # removed tie option as , and \"[[C]]\" for a tie
+)
+
+prompt_predefined_rubric = (
+    "Please act as an impartial judge and evaluate the quality of the responses provided by two AI assistants to the user question displayed below. "
+    "Your evaluation should consider the following criteria:\n"
+    "- **Context Awareness and Memory**: Does the response reference previous turns and maintain conversation continuity?\n"
+    "- **Relevance and Responsiveness**: Does the response directly address the user's query and adhere to the conversation task?\n"
+    "- **Coherence and Consistency**: Is the response logical, free from contradictions, and naturally flowing?\n"
+    "- **Accuracy and Factual Correctness**: Does the response provide reliable and error-checked information?\n"
+    "- **Clarity and Completeness**: Are ideas communicated clearly with the right amount of detail?\n"
+    "- **Tone, Style, and Engagement**: Does the response use an appropriate tone and encourage further interaction?\n"
+    "- **Adaptability and Flexibility**: Does the response adjust to topic changes while staying user-centric?\n"
+    "- **Creativity and Insight (if applicable)**: Does the response add value through innovative ideas or problem-solving?\n\n"
+    "Begin your evaluation by comparing the two responses based on these factors and provide a short explanation. Avoid any position biases "
+    "and ensure that the order in which the responses were presented does not influence your decision. Do not allow response length or assistant names to "
+    "affect your evaluation. Be as objective as possible. After providing your explanation, output your final verdict by strictly following this format: "
+    '"[[A]]" if assistant A is better, "[[B]]" if assistant B is better.'  # removed tie option
 )
 
 MTBENCH_V2 = {
@@ -353,7 +374,6 @@ RM_R1_MULTI_TURN_REASONING_USER_PROMPT = (
     "'<answer>[[A]]</answer>' if Chatbot A is better, or '<answer>[[B]]</answer>' if Chatbot B is better."
 )
 
-# format with prompt_template.format(question=question, answer_a=answer_a, answer_b=answer_b)
 def format_judge_answers(question, answer_a, answer_b, multi_turn=False, model_modifier=None):
     kwargs = {}
     if model_modifier == "prometheus":
@@ -376,14 +396,6 @@ def format_judge_answers(question, answer_a, answer_b, multi_turn=False, model_m
             user_prompt = CON_J_PROMPT.format(
                 instruction=question, output_1=answer_a[1]["content"], output_2=answer_b[1]["content"]
             )
-    elif model_modifier == "RISE-Judge":
-        if multi_turn:
-            raise ValueError("RISE-Judge prompts do not support multi-turn prompts")
-        else:
-            system_prompt = ""
-            user_prompt = RISE_Judge_PROMPT.format(
-                instruction=question, output_1=answer_a[1]["content"], output_2=answer_b[1]["content"]
-            )
     elif model_modifier == "offsetbias":
         if multi_turn:
             raise ValueError("Offsetbias prompts do not support multi-turn prompts")
@@ -404,7 +416,7 @@ def format_judge_answers(question, answer_a, answer_b, multi_turn=False, model_m
             )
     elif model_modifier == "RM-R1-Instruct":
         if multi_turn:
-            raise NotImplementedError("Multi-turn not Implemented here")
+            raise NotImplementedError("Multi-turn not Implemented for RM-Bench")
         else:
             system_prompt = RM_R1_INSTRUCT_SYSTEM_PROMPT
             user_prompt = RM_R1_SINGLE_TURN_INSTRUCT_USER_PROMPT.format(
@@ -414,7 +426,7 @@ def format_judge_answers(question, answer_a, answer_b, multi_turn=False, model_m
             )
     elif model_modifier == "RM-R1-Reasoning":
         if multi_turn:
-            raise NotImplementedError("Multi-turn not Implemented here")
+            raise NotImplementedError("Multi-turn not Implemented for RM-Bench")
         else:
             system_prompt = ""
             user_prompt = RM_R1_SINGLE_TURN_REASONING_USER_PROMPT.format(
@@ -435,6 +447,7 @@ def format_judge_answers(question, answer_a, answer_b, multi_turn=False, model_m
                 **kwargs,
             )
         else:
+
             system_prompt = MTBENCH_V2["system_prompt"]
             user_prompt = MTBENCH_V2["prompt_template"].format(
                 question=question,
