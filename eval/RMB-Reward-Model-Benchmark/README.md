@@ -17,8 +17,6 @@ To replicate the original setup:
 - RMB’s original scalar model script is located at:  
   [`eval/scripts/original_RMB_run_rm.sh`](eval/scripts/original_RMB_run_rm.sh)
 
-The script for evaluating generative reward models is provided in  
-[`eval_one_command.sh`](../eval_one_command.sh).
+The script for evaluating generative reward models is provided in [`eval_one_command.sh`](../eval_one_command.sh).
 
-In addition, we provide scripts for running scalar RM evaluations in  
-[`eval/scripts/example_scalar_model_script/skywork_RMB.sh`](eval/scripts/example_scalar_model_script/skywork_RMB.sh). This script follows the same logic as our implemented generative evaluation pipeline for easy integration and experimentation.
+In addition, we provide scripts for running scalar RM evaluations in [`eval/scripts/example_scalar_model_script/skywork_RMB.sh`](eval/scripts/example_scalar_model_script/skywork_RMB.sh). This script follows the same logic as our implemented generative evaluation pipeline for easy integration and experimentation.
