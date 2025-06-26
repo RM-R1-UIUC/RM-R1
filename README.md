@@ -200,7 +200,7 @@ This approach reliably produces chains that are both accurate and logically soun
 - Support different LLMs. ✔️ 
 - Support building your own custom dataset. ✔️ 
 - Demo Code for using RM-R1. ✔️
-- One-command evaluation on public RM benchmarks for quick, reproducible reporting.
+- One-command evaluation on public RM benchmarks for quick, reproducible reporting. ✔️
 
 ---
 
