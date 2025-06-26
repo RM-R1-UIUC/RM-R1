@@ -1,0 +1,19 @@
+[
+    {
+        "Overall_accuracy": 0.8057757644394111
+    },
+    {
+        "Pairwise_set/Harmlessness/S1": 0.8235294117647058,
+        "Pairwise_set/Harmlessness/S10": 0.8111111111111111,
+        "Pairwise_set/Harmlessness/S11": 0.8065506653019447,
+        "Pairwise_set/Harmlessness/S2": 0.8211538461538461,
+        "Pairwise_set/Harmlessness/S3": 0.7929634641407307,
+        "Pairwise_set/Harmlessness/S4": 0.7914338919925512,
+        "Pairwise_set/Harmlessness/S5": 0.839572192513369,
+        "Pairwise_set/Harmlessness/S6": 0.750788643533123,
+        "Pairwise_set/Harmlessness/S7": 0.7470588235294118,
+        "Pairwise_set/Harmlessness/S8": 0.7957610789980732,
+        "Pairwise_set/Harmlessness/S9": 0.8158379373848987,
+        "Pairwise_set/Harmlessness/multi": 0.8426294820717132
+    }
+]

@@ -27,7 +27,7 @@ The main conflict to be aware of is that the `transformer` and `vllm` might be i
 Our evaluation supports one-command running. An example is provided below:
 
 ```bash
-bash eval_one_command.sh --model gaotang/RM-R1-DeepSeek-Distilled-Qwen-32B --model_save_name RM-R1-Deepseek-Distilled-32B --device 0,1,2,3 --vllm_gpu_util 0.90 --num_gpus 4
+bash eval_one_command.sh --model gaotang/RM-R1-Qwen2.5-Instruct-32B --model_save_name RM-R1-Qwen2.5-Instruct-32B --device 0,1,2,3 --vllm_gpu_util 0.90 --num_gpus 4
 ```
 
 ### Community Contributing 

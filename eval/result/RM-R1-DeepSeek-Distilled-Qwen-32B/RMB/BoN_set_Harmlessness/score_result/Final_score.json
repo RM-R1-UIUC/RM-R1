@@ -1,0 +1,22 @@
+[
+    {
+        "Absolute Accuracy (all correct / all)": 0.7588373919874313,
+        "BoN Final Accuracy": 0.6177698270721527,
+        "BoN Absolute Number of Correct": 1036,
+        "BoN Absolute Total Numbers": 1677
+    },
+    {
+        "BoN_set/Harmlessness/S1": 0.7477477477477478,
+        "BoN_set/Harmlessness/S10": 0.620253164556962,
+        "BoN_set/Harmlessness/S11": 0.5720930232558139,
+        "BoN_set/Harmlessness/S2": 0.6666666666666666,
+        "BoN_set/Harmlessness/S3": 0.543859649122807,
+        "BoN_set/Harmlessness/S4": 0.6176470588235294,
+        "BoN_set/Harmlessness/S5": 0.6885245901639344,
+        "BoN_set/Harmlessness/S6": 0.5783132530120482,
+        "BoN_set/Harmlessness/S7": 0.5289256198347108,
+        "BoN_set/Harmlessness/S8": 0.5905511811023622,
+        "BoN_set/Harmlessness/S9": 0.6136363636363636,
+        "BoN_set/Harmlessness/multi": 0.6564885496183206
+    }
+]
