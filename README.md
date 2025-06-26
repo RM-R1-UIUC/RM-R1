@@ -17,15 +17,15 @@ This repository provides all materials necessary to reproduce and extend RM-R1:
 
 All experiments are fully documented so that results can be audited or adapted to new domains with minimal changes. 
 
-**<span style="color:#d45500;">⚡ This repository is continuously updated—star it to follow new releases!</span>**
+<!-- **<span style="color:#d45500;">⚡ This repository is continuously updated—star it to follow new releases!</span>** -->
 
 ---
 
 ## 📑 Table of Contents
 1. [Installation](#installation)
 2. [Training](#-training-workflow)
-3. [Evaluation](#evaluation)
-4. [User Our Model](#use-our-model)
+3. [User Our Model](#use-our-model)
+4. [Evaluation](#evaluation)
 5. [Build Your Own Dataset](#-build-your-own-dataset)
 6. [Features](#features)
 7. [Acknowledgements](#acknowledgement)
@@ -144,7 +144,7 @@ You can find a demo of how to use our model in the Jupyter notebook located at [
 
 ## Evaluation 
 
-Our evaluation leverages three publicly available datasets: [RewardBench](https://github.com/allenai/reward-bench), [RM-Bench](https://github.com/THU-KEG/RM-Bench), and [RMB](https://github.com/Zhou-Zoey/RMB-Reward-Model-Benchmark). The evaluation code is provided in the [`eval/`](eval/) directory.
+Our evaluation leverages three publicly available datasets: [RewardBench](https://github.com/allenai/reward-bench), [RM-Bench](https://github.com/THU-KEG/RM-Bench), and [RMB](https://github.com/Zhou-Zoey/RMB-Reward-Model-Benchmark). The evaluation code, along with detailed documentation, is available in the [`eval/`](eval/) directory.
 
 To run the evaluation, simply execute the following script:
 
@@ -152,7 +152,9 @@ To run the evaluation, simply execute the following script:
 bash eval/eval_one_command.sh
 ```
 
-The main arguments to modify are `model` and `model_save_name`. To facilitate better interpretation, our evaluation pipeline logs per-sample outputs of the model. We provide the examplar per-sample-output at [`eval/result/`](eval/result/).
+The primary arguments to modify are `model` and `model_save_name`. To facilitate better interpretation, our evaluation pipeline **logs per-sample** outputs of the model. We provide the examplar per-sample-output at [`eval/result/`](eval/result/).
+
+**Feel free to add your own models or datasets to the pipeline for one-line, transparent, and comprehensive reward model evaluations!** 
 
 
 ---
