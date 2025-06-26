@@ -14,8 +14,7 @@ The original RMB codebase can be found [here](https://github.com/Zhou-Zoey/RMB-R
 
 To replicate the original setup:
 
-- RMB’s original scalar model script is located at:  
-  [`eval/scripts/original_RMB_run_rm.sh`](eval/scripts/original_RMB_run_rm.sh)
+- RMB’s original scalar model script is located at [`eval/scripts/original_RMB_run_rm.sh`](eval/scripts/original_RMB_run_rm.sh).
 
 The script for evaluating generative reward models is provided in [`eval_one_command.sh`](../eval_one_command.sh).
 
